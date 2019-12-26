@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { AuthModule } from './auth/auth.module';
+import { TasksModule } from './tasks/tasks.module';
 
 const config = new ConfigService();
 
@@ -15,6 +16,7 @@ const config = new ConfigService();
     AuthModule,
     UsersModule,
     ConfigModule,
+    TasksModule,
   ],
   controllers: [],
   providers: [ConfigService],
