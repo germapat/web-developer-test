@@ -1,7 +1,8 @@
-import { Controller, Get, UseGuards, Post, Body } from '@nestjs/common';
+import { Controller, Get, UseGuards, Post, Body, Param, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
 import { CreateUserDto } from './dto/create-user.dto';
+import { ConfirmRegistrationDto } from './dto/confirm-registration';
 
 @Controller('users')
 export class UsersController {
@@ -16,5 +17,10 @@ export class UsersController {
     @Post()
     async create(@Body() createUserDto: CreateUserDto): Promise<any> {
         return await this.userService.createUser(createUserDto);
+    }
+
+    @Get('confirm-registration')
+    async confirmRegistration(@Query() confirmRegistrationDto: ConfirmRegistrationDto): Promise<any> {
+        return await this.userService.confirmRegistration(confirmRegistrationDto);
     }
 }

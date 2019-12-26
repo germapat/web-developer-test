@@ -8,6 +8,7 @@ export class ConfigService {
     constructor() {
         this.environment = process.env.NODE_ENV || 'development';
         this.envData = dotenv.parse(fs.readFileSync(`${this.environment}.env`));
+        dotenv.config({ path: '/' + `${this.environment}.env` });
     }
 
     get(key: string): string {

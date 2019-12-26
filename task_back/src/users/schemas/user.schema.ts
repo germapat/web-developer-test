@@ -25,6 +25,18 @@ export const UserSchema = new Schema({
         type: String,
         required: true
     },
+    registerStatus: {
+        type: String,
+        required: true,
+        default: 1,
+        length: 1
+    },
+    status: {
+        type: String,
+        required: true,
+        default: 1,
+        length: 1
+    },
     createdAt: {
         type: Date,
         default: Date.now
