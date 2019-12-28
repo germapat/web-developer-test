@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <notifications position="top center" group="app" :max="1"/>
     <router-view/>
   </v-app>
 </template>

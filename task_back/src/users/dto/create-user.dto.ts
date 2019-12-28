@@ -2,9 +2,7 @@ import { IsEmail, IsNotEmpty, Length, IsEnum } from 'class-validator';
 
 enum IdentificationType {
     CC,
-    TI,
-    CE,
-    RC
+    CI
 }
 
 export class CreateUserDto {

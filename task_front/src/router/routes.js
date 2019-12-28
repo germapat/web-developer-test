@@ -9,7 +9,6 @@ export default [
       requiresAuth: true
     },
     children: paths.map(path => route(path.path, path.view, path.name))
-    // children: paths.map(path => route(path.path, path.component, path.name))
   },
   {
     path: '/login',
@@ -17,6 +16,10 @@ export default [
   },
   {
     path: '/register',
+    component: () => import('@/views/register/Register.vue')
+  },
+  {
+    path: '/confirm-registration/',
     component: () => import('@/views/register/Register.vue')
   },
   {

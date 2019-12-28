@@ -5,7 +5,7 @@ import { User } from '../interfaces/user.interface';
 export const UserSchema = new Schema({
     identificationType: {
         type: String,
-        enum: ['CC', 'TI', 'CE', 'RC'],
+        enum: ['CC', 'CI'],
         required: true
     },
     identification: {

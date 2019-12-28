@@ -11,9 +11,6 @@ import './plugins'
 // Sync router with store
 import { sync } from 'vuex-router-sync'
 
-// Notifications component
-import Notifications from 'vue-notification'
-
 // Application imports
 import App from './App'
 import i18n from '@/i18n'
@@ -23,6 +20,9 @@ import VueLodash from 'vue-lodash'
 
 import ApiService from './services/ApiService'
 import { TokenService } from './services/StorageService'
+
+// Notifications component
+import Notifications from "vue-notification";
 
 // Sync store with router
 sync(store, router)
