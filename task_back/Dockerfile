@@ -6,6 +6,7 @@ WORKDIR /app
 ARG env=qa
 # Copy sources
 COPY ./$env.env ./production.env
+COPY ./.env ./env
 COPY ./tsconfig.json ./
 COPY ./tsconfig.build.json ./
 COPY ./package.json ./
