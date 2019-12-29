@@ -1,5 +1,6 @@
 import { Controller, Get, Query, Post, Body, UseGuards, Put } from '@nestjs/common';
-import { TaskDto } from './dto/task-dto'
+import { TaskAllDto } from './dto/taskAll-dto';
+import { TaskDto } from './dto/task-dto';
 import { TaskCreateDto } from './dto/task-create-dto'
 import { TasksService } from './tasks.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -12,6 +13,17 @@ export class TasksController {
     @UseGuards(AuthGuard('jwt'))
     async getTask(@Query() taskDto: TaskDto): Promise<any> {
         return await this.taskService.getTask(taskDto)
+    }
+
+    @Get('all')
+    @UseGuards(AuthGuard('jwt'))
+    async allTaskByUser(@Query() taskDto: TaskAllDto): Promise<any> {
+        return await this.taskService.allTaskByUser(taskDto)
+    }
+    @Get('overcome')
+    @UseGuards(AuthGuard('jwt'))
+    async taskOvercome(@Query() taskDto: TaskAllDto): Promise<any> {
+        return await this.taskService.taskOvercome(taskDto)
     }
 
     @Post()

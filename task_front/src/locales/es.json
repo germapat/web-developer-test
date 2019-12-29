@@ -1,5 +1,19 @@
 {
+  "logout": "Salir",
+  "cancel": "Cancelar",
+  "save-button-label": "Guardar",
+  "update-button-label": "Actualizar",
   "field-required": "Campo requerido",
   "email-validate": "Correo no valido",
-  "password-match": "Contraseña no es igual"
+  "password-match": "Contraseña no es igual",
+  "no-data-available": "No hay datos disponibles",
+  "locale": "es",
+  "task": {
+    "update-task": "Actualizar tarea",
+    "create-task": "Crear tarea",
+    "name": "Nombre",
+    "priority": "Prioridad",
+    "expiration-date": "Fecha vencimiento",
+    "task-show": "Lista de tareas"
+  }
 }

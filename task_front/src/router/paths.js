@@ -6,7 +6,12 @@
 export default [
   {
     path: '/dashboard',
-    // Relative to /src/views
-    view: 'Main'
+    //Relative to /src/views
+    view: 'Dashboard'
+  },
+  {
+    path: '/task',
+    //Relative to /src/views
+    view: 'task/task/Task'
   }
 ]

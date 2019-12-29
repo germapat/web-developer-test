@@ -21,11 +21,11 @@
                     ref="form"
                     v-model="valid">
                     <v-text-field
-                      v-model.trim="username"
-                      :rules="[rules.required]"
+                      v-model.trim="email"
+                      :rules="[rules.emailRules]"
                       prepend-icon="mdi-account"
                       name="login"
-                      label="Usuario"
+                      label="Correo"
                       type="text"
                       @keyup.enter="submit"
                     />

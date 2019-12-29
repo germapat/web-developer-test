@@ -16,7 +16,7 @@ export class AuthService {
         const user: JwtPayload = { id, email };
         const accessToken = this.jwtService.sign(user);
         const expiresIn = this.configService.get('TOKEN_EXPIRES_IN') || '1h';
-        return { expiresIn, accessToken };
+        return { expiresIn, accessToken, user };
     }
 
     getUser(payload: JwtPayload): Promise<any> {

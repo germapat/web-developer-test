@@ -18,6 +18,7 @@ export class UsersService {
         const conditions = {
             email,
             password: crypto.createHmac('sha256', password).digest('hex'),
+
         };
         return await this.userModel.findOne(conditions);
     }

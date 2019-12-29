@@ -5,10 +5,12 @@ export default {
   data () {
     return {
       valid: false,
-      username: '',
+      email: '',
       password: '',
       rules: {
-        required: value => !!value || i18n.t('field-required')
+        required: value => !!value || i18n.t('field-required'),
+        emailRules: value => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || i18n.t('email-validate'),
+
       }
     }
   },
@@ -19,8 +21,8 @@ export default {
     ...mapActions('auth', ['login']),
     submit () {
       if (this.$refs.form.validate()) {
-        const { username, password } = this
-        this.login({ username, password })
+        const { email, password } = this
+        this.login({ email, password })
           .then(user => {
             this.$router.push('/')
           })

@@ -3,10 +3,10 @@ import { StorageService } from "../../../services/StorageService";
 import ApiService from "../../../services/ApiService";
 
 export default {
-  login({ dispatch, commit }, { username, password }) {
+  login({ dispatch, commit }, { email, password }) {
     return new Promise((resolve, reject) => {
-      commit("loginRequest", { username });
-      AuthService.login()
+      commit("loginRequest", { email, password });
+      AuthService.login(email, password)
         .then(user => {
           commit("loginSuccess", user);
           resolve(user);

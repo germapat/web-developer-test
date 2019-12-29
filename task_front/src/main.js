@@ -17,7 +17,7 @@ import i18n from '@/i18n'
 import router from '@/router'
 import store from '@/store'
 import VueLodash from 'vue-lodash'
-
+import VueFilterDateFormat from 'vue-filter-date-format';
 import ApiService from './services/ApiService'
 import { TokenService } from './services/StorageService'
 
@@ -26,7 +26,7 @@ import Notifications from "vue-notification";
 
 // Sync store with router
 sync(store, router)
-
+Vue.use(VueFilterDateFormat);
 Vue.use(VueLodash, { name: 'lodash' })
 
 ApiService.init(process.env.VUE_APP_ROOT_API)

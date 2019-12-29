@@ -13,6 +13,15 @@ export class TasksService {
     async getTask(dto) {
         return await this.taskModel.findOne({ _id: dto._id });
     }
+    async allTaskByUser(dto) {
+        return await this.taskModel.find({owner: dto.owner});
+    }
+
+    async taskOvercome(dto){
+        const now = new Date()
+        const task = await this.taskModel.find({owner: dto.owner, status: 0}).exec();
+        return task.filter(item=>new Date (item.expirationDate).toISOString().substring(0,10)==now.toISOString().substring(0,10))
+    }
 
     async createTask(taskCreateDto: TaskCreateDto): Promise<TaskInterface> {
         const task = new this.taskModel(taskCreateDto)
