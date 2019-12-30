@@ -16,9 +16,9 @@ export class UsersService {
 
     async findByCredentials(email: string, password: string): Promise<User> {
         const conditions = {
-            email,
+            email: email,
             password: crypto.createHmac('sha256', password).digest('hex'),
-            status: "3"
+            registerStatus: "3"
 
         };
         return await this.userModel.findOne(conditions);
@@ -63,7 +63,6 @@ export class UsersService {
     async confirmRegistration(confirmRegistrationDto) {
         let user = await this.userModel.findOne({ identification: confirmRegistrationDto.code, identificationType: confirmRegistrationDto.identificationType }).exec()
         if (!user) throw new NotFoundException(ErrorCode.UserNotFound);
-        user.registerStatus="3"
-        return await user.save()
+        return await user.update({registerStatus: "3"})
     }
 }
