@@ -16,11 +16,8 @@ export default [
   },
   {
     path: '/register',
-    component: () => import('@/views/register/Register.vue')
-  },
-  {
-    path: '/confirm-registration/',
-    component: () => import('@/views/register/Register.vue')
+    component: () => import('@/views/register/Register.vue'),
+    props: (route) => ({ code: route.query.code,  identification: route.query.identification})
   },
   {
     // Always leave this as last one
