@@ -1,0 +1,39 @@
+<div class="side-form">
+    <flash-messages></flash-messages>
+    <h3 class="page-header">{{title}}</h3>
+    <!-- <div class="form-inline"> -->
+    <form (ngSubmit)="onSubmit()">
+        <span class="form-inline"><hr>
+        <div class="form-group" >
+            <label for="descripcion" class="control-label">Descripción de la tarea</label>
+            <input type="text" name="descripcion" [(ngModel)]="tarea.descripcion" class="form-control" required="true" placeholder="Descripcion" />
+        </div>
+        
+        <div class="input-group fluid">
+            <label>Vencimiento</label>
+            <input type="date" name="fechaVencimiento"  [ngModel]="fecha | date:'yyyy-MM-dd'" (ngModelChange)="fecha =
+            $event" min="hoy" max=""/>
+        </div>
+        <div class="form-group">
+            <label for="prioridad" class="control-label">Prioridad</label>
+            <input type="number" name="prioridad" [(ngModel)]="tarea.prioridad" class="form-control" required="true" placeholder="Prioridad" />
+        </div>  
+        </span>
+        <div class="form-group" *ngIf="tarea.created_at">
+            <hr>
+            <label class="control-label">Fecha Creación: {{tarea.created_at| date: 'yyyy-MM-dd HH:mm a' : tarea.offset}}</label>
+            <label class="control-label">Fecha Modificación: {{tarea.updated_at| date: 'yyyy-MM-dd HH:mm a' : tarea.offset}}</label>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="act" class="control-label"><input type="checkbox" name="act" [(ngModel)]="tarea.act" class="form-control"/>Activo</label>
+            </div>
+            <div class="form-group">
+                <flash-messages></flash-messages>
+                <a class="btn btn-warning" [routerLink]="['/tareas']">Cancelar</a>
+                <!-- <button (click)="addMaestro()" class="btn btn-default">Guardar</button> -->
+                <button class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

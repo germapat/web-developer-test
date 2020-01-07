@@ -1,0 +1,33 @@
+<div>
+    <h1>{{title}} </h1>
+    <hr>
+    <a [routerLink]="['/tarea', 'new']" class="btn btn-default">Nueva</a>
+    <div class="table-responsive">
+        <table class="generic-table table table-bordered table-border table-hover">
+            <tr class="success">
+                <th>Descripción</th>
+                <th>Fecha Vencimiento</th>
+                <th>Prioridad</th>
+                <th>Activo</th>
+                <th>Fecha Creado</th>
+                <th>Fecha Actualizado</th>
+                <th class="delete-column"></th>
+                <th class="edit-column"></th>
+            </tr>
+            <tr *ngFor="let tarea of tareas">
+                <td><a [routerLink]="['/tarea', tarea._id]">{{tarea.descripcion}}</a></td>
+                <td>{{tarea.fechaVencimiento| date: 'yyyy-MM-dd'}}</td>
+                <td>{{tarea.prioridad}}</td>
+                <td><input type="checkbox" name="act" [(ngModel)]="tarea.act" disabled="true" /></td>
+                <td>{{tarea.createdAt| date: 'yyyy-MM-dd HH:mm a' : tarea.offset}}</td>
+                <td>{{tarea.updatedAt| date: 'yyyy-MM-dd HH:mm a' : tarea.offset}}</td>
+                <td><a [routerLink]="['/tarea', tarea._id]" class="btn btn-xs btn-default">Editar</a></td>
+                <td><a (click)="deleteTarea(tarea._id)" class="btn btn-xs btn-danger">Borrar</a></td>
+            </tr>
+        </table>
+    </div>
+    <h3>Cantidad: {{tareascount}}</h3>
+</div>
+<div class="view-side-form">
+    <router-outlet></router-outlet>
+</div>

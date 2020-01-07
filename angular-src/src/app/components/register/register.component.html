@@ -1,0 +1,57 @@
+<div class="side-form">
+    <h3 class="page-header">{{title}}</h3>
+    <!-- <flash-messages></flash-messages> -->
+    <!-- <div class="form-inline"> -->
+    <form (ngSubmit)="onRegisterSubmit()">
+        <span class="form-inline">
+            <div class="form-group" >
+             <label for="tip" class="control-label">Tipo Documento</label>
+             <select name="tip" [(ngModel)]="user.tip">
+                <option *ngFor="let i of tipos" [ngValue]="i.cod">{{i.des}}</option>
+             </select>
+            </div>
+            <div class="form-group" >
+                <label for="id" class="control-label">Número de documento</label>      
+                <input type="text" name="id" [(ngModel)]="user.id" class="form-control" required="true" placeholder="Documento de identidad" />          
+            </div>
+        <hr>
+        <div class="form-group" >
+            <label for="name" class="control-label">Nombre y apellidos</label>
+            <input type="text" name="name" [(ngModel)]="user.name" class="form-control" required="true" placeholder="Nombre completo" />
+        </div>
+        <div class="form-group">
+            <label for="username" class="control-label">Usuario</label>
+            <input type="text" name="username" [(ngModel)]="user.username" class="form-control" placeholder="Nombre de usuario"/>
+        </div>
+        <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <input type="text" name="email" [(ngModel)]="user.email" class="form-control" placeholder="Correo electrónico"/>
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label">Contraseña</label>
+            <input type="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Contraseña"/>
+        </div>
+           <hr >
+        <div  class="form-inline" class="form-group" > 
+            <label for="super" class="control-label"><input type="checkbox" name="super" [(ngModel)]="user.super" class="form-control" readonly="true" />Super Usuario</label>
+            <label for="psico" class="control-label"><input type="checkbox" name="psico" [(ngModel)]="user.psico" class="form-control"/>Psicólogo</label>
+            <label for="admon" class="control-label"><input type="checkbox" name="admon" [(ngModel)]="user.admon" class="form-control"/>Administración</label>
+        </div>
+        <div class="form-group" *ngIf="user.created_at">
+        <hr>
+        <label class="control-label">Fecha Creación: {{user.created_at| date: 'yyyy-MM-dd HH:mm a' : user.offset}}  
+        </label>
+            <label class="control-label">  
+                Fecha Modificación: {{user.updated_at| date: 'yyyy-MM-dd HH:mm a' : user.offset}}</label>
+        </div>
+        <div>
+         <label for="act" class="control-label"><input type="checkbox" name="act" [(ngModel)]="user.act" class="form-control"/>Activo</label>
+        </div>            
+        <flash-messages></flash-messages>        
+        <div class="form-group">        
+            <a class="btn btn-warning" [routerLink]="['/register']">Cancelar</a>
+            <button class="btn btn-primary">Guardar</button> 
+        </div>
+    </span>
+    </form>
+</div>

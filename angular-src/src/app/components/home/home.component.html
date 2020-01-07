@@ -1,0 +1,32 @@
+<div class="jumbotron text-center">
+    <h2>GESTIONA TUS TAREAS</h2>
+    <p class="lead">Prueba técnica para E-volution</p>
+    <div>
+        <a class="btn btn-primary" [routerLink]="['/tareas']"> Gestiona tus Tareas / Historial</a>
+        <a class="btn btn-default" [routerLink]="['/login']">Inicio de sesión</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Próximas tareas</h3>
+        <div style="border: 1px solid black">
+            <h3>{{ title }}</h3>
+            <label>Tareas:</label>
+            <span>{{tareas.item1}}</span>
+            <p>{{ tareas.prioridad }}</p>
+            <button type="button" (click)="ChangeItemObject()">
+                  Próxima tarea
+                </button>
+            <app-item [title]="title1" [item]="items"></app-item>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>Prueba técnica</h3>
+        <p>Backend con MongoDB y Express. Pruebas unitarias con jest</p>
+    </div>
+    <div class="col-md-4">
+        <h3>E-volution</h3>
+        <p>Front End con Typescript. Posibilidades de usar protractor y cucumber para el end to end</p>
+    </div>
+</div>

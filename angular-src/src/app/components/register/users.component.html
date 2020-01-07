@@ -1,0 +1,39 @@
+<div>
+    <h1>{{title}} </h1>
+    <hr>
+    <a [routerLink]="['/users/user','new']" class="btn btn-default">Nuevo</a>
+    <div class="table-responsive table">
+        <table class="users-table table table-bordered table-border table-hover">
+            <tr class="success">
+                <th>Tipo Doc</th>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Correo Electrónico</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Activo</th>
+                <th class="delete-column"></th>
+                <th class="edit-column"></th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{user.tip}}</td>
+                <td>{{user.id}}</td>
+                <td><a [routerLink]="['/users/user', user._id]">{{user.name}}</a></td>
+                <td><a [routerLink]="['/users/user', user._id]">{{user.username}}</a></td>
+                <td>{{user.email}}</td>
+                <td>{{user.createdAt| date: 'yyyy-MM-dd HH:mm a' : user.offset}}</td>
+                <td>{{user.updatedAt| date: 'yyyy-MM-dd HH:mm a' : user.offset}}</td>
+                <td><input type="checkbox" name="act" [(ngModel)]="user.act" disabled="true" /></td>
+                <td>
+                    <a [routerLink]="['/users/user', user._id]" class="btn btn-xs btn-default"> <span class="fa fa-user-circle"></span></a>
+                </td>
+                <td><a (click)="deleteUser(user._id)" class="btn btn-xs btn-danger">Borrar</a></td>
+            </tr>
+        </table>
+    </div>
+    <h3>Cantidad: {{userscount}}</h3>
+</div>
+<div class="view-side-form">
+    <router-outlet></router-outlet>
+</div>
